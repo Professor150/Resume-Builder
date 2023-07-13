@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:resume_builder/core/utils/constants/contstants.dart';
+import 'package:resume_builder/features/add_more_section/presentation/provider/switch_provider.dart';
+import 'package:resume_builder/features/create_new_section_page/presentation/provider/create_new_section_provider.dart';
 import 'package:resume_builder/features/homepage/presentation/pages/homepage.dart';
 import 'package:resume_builder/features/homepage/presentation/provider/homepage_provider.dart';
 
@@ -17,6 +19,12 @@ class ResumerBulder extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (context) => Homeprovider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => SwitchProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => CreateNewSectionProvider(),
         ),
       ],
       child: MaterialApp(

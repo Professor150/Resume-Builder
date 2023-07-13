@@ -4,14 +4,9 @@ import 'package:resume_builder/core/custom_widgets/custom_text_form_fileds.dart'
 import 'package:resume_builder/core/utils/constants/contstants.dart';
 import 'package:resume_builder/features/education_page/presentation/widgets/help_sign_widget.dart';
 
-class EducationPage extends StatefulWidget {
-  const EducationPage({super.key});
+class ReferencePage extends StatelessWidget {
+  const ReferencePage({super.key});
 
-  @override
-  State<EducationPage> createState() => _EducationPageState();
-}
-
-class _EducationPageState extends State<EducationPage> {
   @override
   Widget build(BuildContext context) {
     double height = mediaQueryHeight(context);
@@ -22,7 +17,7 @@ class _EducationPageState extends State<EducationPage> {
           IconButton(
             onPressed: () => showModalBottomSheet(
               context: context,
-              builder: (context) => HelpIconWidget(),
+              builder: (context) => const HelpIconWidget(),
             ),
             icon: const Icon(Icons.help_center_rounded),
           ),
@@ -37,7 +32,7 @@ class _EducationPageState extends State<EducationPage> {
             width: width * 0.01,
           ),
         ],
-        title: customText(context: context, text: 'Educations'),
+        title: customText(context: context, text: 'Reference'),
       ),
       body: Column(
         children: [
@@ -54,7 +49,7 @@ class _EducationPageState extends State<EducationPage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                customText(context: context, text: 'Education 1'),
+                customText(context: context, text: 'Reference 1'),
                 SizedBox(
                   width: width * 0.4,
                 ),
@@ -72,25 +67,37 @@ class _EducationPageState extends State<EducationPage> {
             height: height * 0.02,
           ),
           buildTextFormField(
+            textInputAction: TextInputAction.next,
             context: context,
             contentPadding: height * 0.023,
-            lableText: 'Website (Optional)',
+            lableText: 'Reference Name',
           ),
           buildTextFormField(
+            textInputAction: TextInputAction.next,
             context: context,
             contentPadding: height * 0.023,
-            lableText: 'School/University',
+            lableText: 'Job Title',
           ),
           buildTextFormField(
+            textInputAction: TextInputAction.next,
             context: context,
             contentPadding: height * 0.023,
-            lableText: 'Grade/Score',
+            lableText: 'Company Name',
           ),
           buildTextFormField(
+            textInputAction: TextInputAction.next,
             context: context,
             contentPadding: height * 0.023,
-            lableText: 'Year',
-            keyboardType: TextInputType.number,
+            lableText: 'Email',
+          ),
+          buildTextFormField(
+            textInputAction: TextInputAction.next,
+            context: context,
+            contentPadding: height * 0.023,
+            lableText: 'Phone',
+          ),
+          SizedBox(
+            height: height * 0.26,
           ),
         ],
       ),

@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:resume_builder/core/custom_widgets/custom_text.dart';
 import 'package:resume_builder/core/utils/constants/contstants.dart';
+import 'package:resume_builder/features/add_more_section/presentation/pages/add_more_section_page.dart';
 import 'package:resume_builder/features/education_page/presentation/pages/education_page.dart';
+import 'package:resume_builder/features/experience_page/presentation/pages/experience_page.dart';
+import 'package:resume_builder/features/objective_page/presentation/pages/objective_page.dart';
 import 'package:resume_builder/features/personal_deatail_page/presentation/pages/personal_detail_page.dart';
+import 'package:resume_builder/features/project_page/presentation/pages/project_page.dart';
+import 'package:resume_builder/features/rearrange_heading_page/presentation/pages/rearrange_heading_page.dart';
+import 'package:resume_builder/features/refreence_page/presentation/pages/refrence_page.dart';
+import 'package:resume_builder/features/skills_page/presentation/pages/skills_page.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -48,8 +55,8 @@ class _ProfilePageState extends State<ProfilePage> {
               Colors.white,
             ],
                 stops: [
-              1,
-              5
+              0.57,
+              -0
             ])),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -86,7 +93,15 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                   ),
                   Expanded(
-                    child: _buildCard(icon: Icons.person, text: 'Expericence'),
+                    child: _buildCard(
+                      icon: Icons.person,
+                      text: 'Experience',
+                      onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const ExperiencePage(),
+                          )),
+                    ),
                   ),
                 ],
               ),
@@ -100,13 +115,37 @@ class _ProfilePageState extends State<ProfilePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Expanded(
-                    child: _buildCard(icon: Icons.security, text: 'Skills'),
+                    child: _buildCard(
+                        icon: Icons.security,
+                        text: 'Skills',
+                        onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const SkillsPage(),
+                              ),
+                            )),
                   ),
                   Expanded(
-                    child: _buildCard(icon: Icons.flag, text: 'Objective'),
+                    child: _buildCard(
+                      icon: Icons.flag,
+                      text: 'Objective',
+                      onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const ObjectivePage(),
+                          )),
+                    ),
                   ),
                   Expanded(
-                    child: _buildCard(icon: Icons.refresh, text: 'Refrence'),
+                    child: _buildCard(
+                      icon: Icons.refresh,
+                      text: 'Refrence',
+                      onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const ReferencePage(),
+                          )),
+                    ),
                   ),
                 ],
               ),
@@ -133,8 +172,24 @@ class _ProfilePageState extends State<ProfilePage> {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _buildCard(icon: Icons.folder, text: 'Projects'),
-                  _buildCard(icon: Icons.add, text: 'Add More \nSections'),
+                  _buildCard(
+                    icon: Icons.folder,
+                    text: 'Projects',
+                    onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ProjectPage(),
+                        )),
+                  ),
+                  _buildCard(
+                    icon: Icons.add,
+                    text: 'Add More \nSections',
+                    onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const AddMoreSectionPage(),
+                        )),
+                  ),
                 ],
               ),
             ),
@@ -155,25 +210,34 @@ class _ProfilePageState extends State<ProfilePage> {
               height: height * 0.11,
               padding: EdgeInsets.symmetric(
                   horizontal: height * 0.01, vertical: height * 0.01),
-              child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(height * 0.01),
-                  ),
-                  child: Row(
-                    children: [
-                      SizedBox(
-                        width: width * 0.03,
-                      ),
-                      const Icon(Icons.vertical_split),
-                      SizedBox(
-                        width: width * 0.05,
-                      ),
-                      customText(
-                          context: context,
-                          text: 'Rearrange/Heading',
-                          color: Colors.black),
-                    ],
-                  )),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ReArrangeHeadingPage(),
+                      ));
+                },
+                child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(height * 0.01),
+                    ),
+                    child: Row(
+                      children: [
+                        SizedBox(
+                          width: width * 0.03,
+                        ),
+                        const Icon(Icons.vertical_split),
+                        SizedBox(
+                          width: width * 0.05,
+                        ),
+                        customText(
+                            context: context,
+                            text: 'Rearrange/Heading',
+                            color: Colors.black),
+                      ],
+                    )),
+              ),
             ),
           ],
         ),
@@ -195,9 +259,9 @@ class _ProfilePageState extends State<ProfilePage> {
             color: Colors.white,
             boxShadow: const [
               BoxShadow(
-                offset: Offset(1, 1),
-                color: Colors.deepOrange,
-              ),
+                  offset: Offset(2, 1),
+                  color: Colors.deepPurpleAccent,
+                  blurRadius: 1),
             ]),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,

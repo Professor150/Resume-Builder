@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:resume_builder/core/custom_widgets/custom_text.dart';
+import 'package:resume_builder/core/utils/constants/contstants.dart';
 import 'package:resume_builder/features/homepage/presentation/provider/homepage_provider.dart';
 import 'package:resume_builder/features/profile_page/presentation/pages/profile_page.dart';
 
@@ -16,6 +17,7 @@ class _HomepageState extends State<Homepage> {
 
   @override
   Widget build(BuildContext context) {
+    double height = mediaQueryHeight(context);
     final provider = Provider.of<Homeprovider>(context);
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
@@ -51,8 +53,16 @@ class _HomepageState extends State<Homepage> {
       appBar: AppBar(
         title: customText(context: context, text: 'Resume Builder'),
       ),
-      body: const Column(
-        children: [],
+      body: Column(
+        children: [
+          Container(
+            color: Colors.green,
+            margin: EdgeInsets.symmetric(
+                horizontal: height * 0.01, vertical: height * 0.01),
+            height: height * 0.2,
+            width: double.infinity,
+          ),
+        ],
       ),
     );
   }
